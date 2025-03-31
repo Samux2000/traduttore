@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Traduttore</title>
+</head>
+<body>
+	<header>
+		<h1>Traduttore</h1>
+	</header>
+	<main>
+		<!-- Sezione per la traduzione di una Parola da Italiano a Inglese -->
+		<section>
+			<form action="/inglese/parola" method="post" th:object="${parolaIng}">
+				<h2>Traduci parola da Italiano a Inglese</h2>
+				<div>
+					<label for="parIng">Parola</label> <input id="parIng"
+						th:field="*{parola}" placeholder="Inserisci la parola">
+				</div>
+				<div>
+					<button type="submit">Traduci</button>
+				</div>
+				<div th:if="${traParIng}">
+					<h3>Traduzione</h3>
+					<p th:text="${traParIng}"></p>
+				</div>
+
+
+			</form>
+		</section>
+
+		<!-- Sezione per la traduzione da Italiano a Giapponese -->
+		<section>
+			<form action="/giapponese/parola" method="post"
+				th:object="${parolaGia}">
+				<h2>Traduci parola da Italiano a Giapponese</h2>
+				<div>
+					<label for="parGia">Parola</label> <input id="parGia"
+						th:field="*{parola}" placeholder="Inserisci la parola">
+				</div>
+				<div>
+					<button type="submit">Traduci</button>
+				</div>
+				<div th:if="${traParGia}">
+					<h3>Traduzione</h3>
+					<p th:text="${traParGia}"></p>
+				</div>
+			</form>
+		</section>
+
+		<!-- Sezione Dizionario -->
+		<section>
+			<h3>Dizionario</h3>
+			<ul>
+				<!-- Itera sull'array 'dizionario' e mostra ogni traduzione -->
+				<li th:each="traduzione : ${dizionario}" th:text="${traduzione}"></li>
+			</ul>
+		</section>
+	</main>
+</body>
+</html>
